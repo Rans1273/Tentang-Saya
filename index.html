@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="id" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASRAN, S.T. — Portfolio & Engineer</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS Terpisah -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/icons/favicon.png">
+    
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            // Masukkan Public Key Anda di sini
+            emailjs.init("HCADWdLePbnZ_m3C3"); 
+        })();
+    </script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#navbar-portfolio" data-bs-offset="120">
+
+    <!-- NAVBAR -->
+    <nav id="navbar-portfolio" class="navbar navbar-expand-lg fixed-top py-3 navbar-custom">
+        <div class="container">
+            <a class="navbar-brand fs-4" href="#beranda">
+                <span class="text-primary">ASRAN</span><span class="fw-normal">, S.T.</span>
+            </a>
+            
+            <div class="d-flex align-items-center gap-2">
+                <button class="btn btn-sm btn-outline-primary d-lg-none rounded-pill px-3" id="theme-toggle-mobile" onclick="toggleTheme()">
+                    <i class="bi bi-sun-fill" id="theme-icon-mobile"></i>
+                </button>
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3 align-items-lg-center mt-3 mt-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#keahlian">Keahlian</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pengalaman">Pengalaman</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyek">Proyek</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#github-stats">GitHub</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    
+                    <li class="nav-item ms-lg-2 d-none d-lg-block">
+                        <button class="btn btn-outline-primary rounded-circle p-2 lh-1" id="theme-toggle-desktop" onclick="toggleTheme()" title="Ganti Tema">
+                            <i class="bi bi-sun-fill fs-6" id="theme-icon-desktop"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. BERANDA / HERO SECTION -->
+    <header id="beranda" class="hero-section">
+        <div class="container">
+            <div class="row align-items-end g-4">
+                <div class="col-lg-6 text-center text-lg-start pb-5 mb-lg-5">
+                    <span class="badge badge-custom px-3 py-2 rounded-pill mb-4 fs-6">
+                        <i class="bi bi-mortarboard-fill me-2"></i>Alumni Teknik Komputer UBT
+                    </span>
+                    <h1 class="display-3 fw-extrabold mb-3 tracking-tight">Halo, Saya <span class="text-primary">ASRAN, S.T.</span></h1>
+                    <p class="lead text-muted mb-4 fs-5 lh-base">Sarjana Teknik Komputer yang berfokus pada pengembangan sistem IoT, perangkat keras tertanam (Embedded Systems), serta solusi web & mobile modern.</p>
+                    <div class="d-flex justify-content-center justify-content-lg-start gap-3">
+                        <a href="#proyek" class="btn btn-primary btn-lg px-4 py-3 fw-semibold shadow-lg">Eksplor Proyek</a>
+                        <a href="#kontak" class="btn btn-outline-primary btn-lg px-4 py-3 fw-semibold">Mari Berdiskusi</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 text-center px-0">
+                    <div class="hero-profile-wrapper">
+                        <img src="assets/images/profile-placeholder.png" alt="Foto Profil Asran" class="hero-profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 2. TENTANG SAYA (DENGAN GALERI FOTO SWIPE / ROTASI BERGANTIAN) -->
+    <section id="tentang">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <!-- Kolom Galeri Foto Interaktif -->
+                <div class="col-lg-5 text-center">
+                    <div class="about-gallery-container" id="aboutGallery" onclick="nextPhoto()" title="Klik untuk mengganti foto">
+                        <!-- Foto 1 (Rotasi Kiri) -->
+                        <div class="about-photo-card active" data-index="0">
+                            <img src="assets/images/saya-01.png" alt="Asran 1">
+                        </div>
+                        <!-- Foto 2 (Rotasi Kanan) -->
+                        <div class="about-photo-card next" data-index="1">
+                            <img src="assets/images/saya-02.png" alt="Asran 2">
+                        </div>
+                        <!-- Foto 3 (Rotasi Kiri) -->
+                        <div class="about-photo-card" data-index="2">
+                            <img src="assets/images/saya-03.png" alt="Asran 3">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kolom Deskripsi -->
+                <div class="col-lg-7">
+                    <h2 class="fw-bold mb-4">Tentang <span class="text-primary">Saya</span></h2>
+                    <p class="text-muted fs-5 lh-base mb-4">Halo! Nama saya Asran, S.T., lulusan Sarjana Teknik Komputer dari Universitas Borneo Tarakan (UBT). Saya memiliki minat mendalam serta pengalaman praktis dalam merancang integrasi perangkat keras IoT, pengembangan sistem web menggunakan kerangka kerja Laravel & PHP, serta aplikasi mobile berbasis Flutter.</p>
+                    <p class="text-muted fs-5 lh-base">Melalui latar belakang akademis dan pengalaman proyek riset seperti skripsi sistem perpustakaan pintar berbasis IoT & Machine Learning, saya siap mendedikasikan keahlian di bidang teknologi untuk menciptakan solusi inovatif.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. KEAHLIAN -->
+    <section id="keahlian">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Keahlian & Teknologi</h2>
+                <p class="text-muted">Teknologi dan perangkat utama yang dikuasai.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="mb-4 text-primary fs-1">
+                            <i class="bi bi-window-sidebar"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Web Development</h4>
+                        <p class="text-muted mb-0">Pengembangan backend & frontend dinamis menggunakan PHP, Laravel, HTML5, CSS3, Bootstrap 5, JavaScript, dan MySQL.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="mb-4 text-primary fs-1">
+                            <i class="bi bi-cpu"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">IoT & Hardware</h4>
+                        <p class="text-muted mb-0">Integrasi mikrokontroler ESP32, ESP32-C3, modul sensor RFID, PZEM004T, MQTT broker, aktuator, dan stepper motor.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="mb-4 text-primary fs-1">
+                            <i class="bi bi-phone"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Mobile & AI</h4>
+                        <p class="text-muted mb-0">Pengembangan aplikasi mobile lintas platform dengan Flutter & Dart, serta dasar Computer Vision menggunakan Python dan OpenCV.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. PENGALAMAN -->
+    <section id="pengalaman">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Pengalaman & Organisasi</h2>
+                <p class="text-muted">Jejak langkah profesional, akademis, dan kontribusi sosial.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="timeline-modern">
+                        
+                        <div class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div class="glass-card p-4">
+                                <h4 class="fw-bold mb-1">Asisten Laboratorium Elektronika Lanjut</h4>
+                                <h6 class="text-primary mb-2">Universitas Borneo Tarakan</h6>
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar-event me-2"></i>Akademik & Riset</p>
+                                <p class="text-muted mb-0">Membimbing praktikum mahasiswa, memfasilitasi eksperimen perangkat keras tingkat lanjut, serta mengevaluasi pemahaman praktikan terkait sistem embedded.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div class="glass-card p-4">
+                                <h4 class="fw-bold mb-1">Asisten Laboratorium Dasar Elektronika</h4>
+                                <h6 class="text-primary mb-2">Universitas Borneo Tarakan</h6>
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar-event me-2"></i>Akademik & Bimbingan</p>
+                                <p class="text-muted mb-0">Bertanggung jawab dalam mendampingi mahasiswa memahami konsep dasar elektronika, pengukuran alat ukur, dan rangkaian komponen dasar.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div class="glass-card p-4">
+                                <h4 class="fw-bold mb-1">Kerja Praktik (KP)</h4>
+                                <h6 class="text-primary mb-2">STO Telkom Tarakan</h6>
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar-event me-2"></i>Pengalaman Lapangan Industri</p>
+                                <p class="text-muted mb-0">Mempelajari infrastruktur jaringan telekomunikasi, sistem operasional perangkat jaringan, dan pengelolaan sistem sentral telepon secara langsung di lapangan.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div class="glass-card p-4">
+                                <h4 class="fw-bold mb-1">Pengembangan Website SDA Bulungan</h4>
+                                <h6 class="text-primary mb-2">Kabupaten Bulungan</h6>
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar-event me-2"></i>Proyek Pengembangan Sistem</p>
+                                <p class="text-muted mb-0">Terlibat dalam proses pembuatan dan pengembangan sistem data berbasis web untuk pengelolaan Sumber Daya Alam (SDA) di wilayah Kabupaten Bulungan.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div class="glass-card p-4">
+                                <h4 class="fw-bold mb-1">Pelatihan Komunikasi Digital</h4>
+                                <h6 class="text-primary mb-2">SMP Tanjung Palas Utara, Bulungan</h6>
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar-event me-2"></i>Pengabdian Masyarakat</p>
+                                <p class="text-muted mb-0">Menjadi fasilitator/pemateri dalam kegiatan pengabdian pelatihan literasi dan komunikasi digital bagi siswa-siswi di SMP Tanjung Palas Utara.</p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <div class="glass-card p-4">
+                                <h4 class="fw-bold mb-1">Himpunan Mahasiswa Jurusan Teknik Komputer</h4>
+                                <h6 class="text-primary mb-2">Universitas Borneo Tarakan (UBT)</h6>
+                                <p class="text-muted small mb-3"><i class="bi bi-calendar-event me-2"></i>Organisasi Mahasiswa</p>
+                                <p class="text-muted mb-0">Aktif berorganisasi dan berkontribusi dalam berbagai program kerja kepemimpinan, sosial, dan kegiatan akademik jurusan.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PROYEK -->
+    <section id="proyek">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Daftar Proyek</h2>
+                <p class="text-muted">Kumpulan proyek unggulan di bidang IoT, Web, Mobile, dan Computer Vision.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 overflow-hidden d-flex flex-column border-primary">
+                        <img src="assets/images/proyek-01.png" class="card-img-top object-fit-cover bg-dark" alt="Smart Gate IoT" style="height: 180px;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge badge-custom align-self-start mb-2 px-2.5 py-1 rounded-pill">IoT / Web / Skripsi</span>
+                            <h5 class="card-title fw-bold mb-2">Smart Gate IoT — Sistem Pencatatan Pengunjung Perpustakaan UBT</h5>
+                            <p class="card-text text-muted small flex-grow-1 mb-3">Proyek utama skripsi: sistem pencatatan pengunjung perpustakaan UBT otomatis berbasis web, kartu pengenal RFID, dan machine learning.</p>
+                            <div>
+                                <span class="text-primary small fw-semibold">#ESP32 #RFID #IoT #PHP #MySQL #StepperMotor</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 overflow-hidden d-flex flex-column">
+                        <img src="assets/images/proyek-02.png" class="card-img-top object-fit-cover bg-dark" alt="PowerTracker" style="height: 180px;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge badge-custom align-self-start mb-2 px-2.5 py-1 rounded-pill text-success bg-success bg-opacity-15 border-success border-opacity-25">IoT / Mobile</span>
+                            <h5 class="card-title fw-bold mb-2">PowerTracker — Realtime Energy Monitoring System</h5>
+                            <p class="card-text text-muted small flex-grow-1 mb-3">Sistem pemantauan penggunaan daya listrik secara real-time yang terhubung langsung ke aplikasi mobile.</p>
+                            <div>
+                                <span class="text-success small fw-semibold">#ESP32 #PZEM004T #Flutter #Firebase #Dart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 overflow-hidden d-flex flex-column">
+                        <img src="assets/images/proyek-03.png" class="card-img-top object-fit-cover bg-dark" alt="ESP32 IoT Projects" style="height: 180px;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge badge-custom align-self-start mb-2 px-2.5 py-1 rounded-pill text-warning bg-warning bg-opacity-15 border-warning border-opacity-25">IoT / Embedded</span>
+                            <h5 class="card-title fw-bold mb-2">ESP32 IoT Projects</h5>
+                            <p class="card-text text-muted small flex-grow-1 mb-3">Kumpulan proyek eksperimen mikrokontroler ESP32 dengan berbagai jenis sensor dan aktuator cerdas.</p>
+                            <div>
+                                <span class="text-warning small fw-semibold">#ESP32 #Arduino #Sensor #Actuator #IoT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 overflow-hidden d-flex flex-column">
+                        <img src="assets/images/proyek-04.png" class="card-img-top object-fit-cover bg-dark" alt="RC Car" style="height: 180px;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge badge-custom align-self-start mb-2 px-2.5 py-1 rounded-pill text-info bg-info bg-opacity-15 border-info border-opacity-25">Robotics</span>
+                            <h5 class="card-title fw-bold mb-2">RC Car — Smart Obstacle Avoidance</h5>
+                            <p class="card-text text-muted small flex-grow-1 mb-3">Perancangan robot mobil cerdas yang mampu mendeteksi dan menghindari rintangan secara otomatis.</p>
+                            <div>
+                                <span class="text-info small fw-semibold">#ESP32 #L293D #Ultrasonic #DCMotor #IoT</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 overflow-hidden d-flex flex-column">
+                        <img src="assets/images/proyek-05.png" class="card-img-top object-fit-cover bg-dark" alt="Flutter Application" style="height: 180px;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge badge-custom align-self-start mb-2 px-2.5 py-1 rounded-pill text-danger bg-danger bg-opacity-15 border-danger border-opacity-25">Mobile App</span>
+                            <h5 class="card-title fw-bold mb-2">Flutter Application</h5>
+                            <p class="card-text text-muted small flex-grow-1 mb-3">Pengembangan aplikasi mobile berbasis cross-platform dengan manajemen state yang terstruktur.</p>
+                            <div>
+                                <span class="text-danger small fw-semibold">#Flutter #Dart #Firebase #Provider</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="glass-card h-100 overflow-hidden d-flex flex-column">
+                        <img src="assets/images/project-02.png" class="card-img-top object-fit-cover bg-dark" alt="Computer Vision" style="height: 180px;">
+                        <div class="card-body d-flex flex-column p-4">
+                            <span class="badge badge-custom align-self-start mb-2 px-2.5 py-1 rounded-pill text-secondary bg-secondary bg-opacity-25 border-secondary border-opacity-25">AI / CV</span>
+                            <h5 class="card-title fw-bold mb-2">Computer Vision & Machine Learning</h5>
+                            <p class="card-text text-muted small flex-grow-1 mb-3">Implementasi algoritme pengolahan citra digital dan machine learning untuk deteksi objek dan ekstraksi fitur.</p>
+                            <div>
+                                <span class="text-secondary small fw-semibold">#Python #OpenCV #HOG #SVM #MachineLearning</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+
+<!-- 6. GITHUB STATS & MONTHLY ACTIVITY (HTML TEXT FORMAT) -->
+<section id="github-stats">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Statistik & Aktivitas GitHub</h2>
+            <p class="text-muted">Ringkasan profil dan repositori publik.</p>
+        </div>
+
+        <!-- Kartu Statistik Utama -->
+        <div class="row g-4 justify-content-center mb-4">
+            <div class="col-lg-10">
+                <div class="glass-card p-4 text-center">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="p-3 bg-body-secondary rounded-3">
+                                <h3 class="fw-bold text-primary mb-1" id="gh-repos">-</h3>
+                                <small class="text-muted">Public Repositories</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-body-secondary rounded-3">
+                                <h3 class="fw-bold text-success mb-1" id="gh-followers">-</h3>
+                                <small class="text-muted">Followers</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-3 bg-body-secondary rounded-3">
+                                <h3 class="fw-bold text-warning mb-1" id="gh-following">-</h3>
+                                <small class="text-muted">Following</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daftar Repositori & Bahasa (Dibuat dalam bentuk Card HTML murni) -->
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-10">
+                <div class="glass-card p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold mb-0 text-white">Repositori Publik Terbaru</h4>
+                        <a href="https://github.com/Rans1273" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                            <i class="bi bi-github me-1"></i> Buka GitHub
+                        </a>
+                    </div>
+                    
+                    <div class="row g-3" id="github-repos-list">
+                        <!-- Data repositori akan dimuat otomatis lewat JavaScript -->
+                        <div class="col-12 text-center text-muted py-4">
+                            <div class="spinner-border text-primary spinner-border-sm" role="status"></div>
+                            <span class="ms-2">Memuat data repositori...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    <!-- 7. KONTAK -->
+    <section id="kontak">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="fw-bold">Hubungi Saya</h2>
+            <p class="text-muted">Mari terhubung melalui media sosial atau kirimkan pesan langsung.</p>
+        </div>
+
+        <div class="row g-5">
+            <!-- Info Kontak & Sosmed -->
+            <div class="col-lg-5">
+                <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between">
+                    <div>
+                        <h4 class="fw-bold mb-4">Informasi Kontak</h4>
+                        
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-envelope-fill fs-4 text-primary me-3"></i>
+                                <span class="text-muted">asran@example.com</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-geo-alt-fill fs-4 text-primary me-3"></i>
+                                <span class="text-muted">Tarakan, Kalimantan Utara, Indonesia</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h5 class="fw-bold mb-3">Media Sosial</h5>
+                        <div class="d-flex gap-3 fs-3">
+                            <a href="https://linkedin.com" target="_blank" class="text-primary" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://instagram.com" target="_blank" class="text-danger" title="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://github.com/Rans1273" target="_blank" class="text-body" title="GitHub"><i class="bi bi-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Pesan Langsung Murni Tanpa Pihak Ketiga -->
+            <div class="col-lg-7">
+                <div class="glass-card p-4">
+                    <h4 class="fw-bold mb-4">Kirim Pesan Langsung</h4>
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="from_name" class="form-label text-muted small fw-semibold">Nama Lengkap</label>
+                            <input type="text" class="form-control" id="from_name" name="from_name" required placeholder="Masukkan nama Anda">
+                        </div>
+                        <div class="mb-3">
+                            <label for="reply_to" class="form-label text-muted small fw-semibold">Alamat Email Anda</label>
+                            <input type="email" class="form-control" id="reply_to" name="reply_to" required placeholder="nama@email.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label text-muted small fw-semibold">Pesan</label>
+                            <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Tuliskan pesan Anda di sini..."></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="btn btn-primary px-4 py-3 fw-semibold w-100 shadow">
+                            <span id="btnText">Kirim Pesan</span>
+                            <i class="bi bi-send ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="mb-1 fw-medium">&copy; 2026 ASRAN, S.T. Universitas Borneo Tarakan.</p>
+            <small class="text-muted">Dibangun dengan HTML, CSS, Bootstrap, dan JavaScript.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- JavaScript Theme Toggle, Galeri Foto Interaktif & Form Logika -->
+    <script>
+        // Logika Ganti Tema
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-bs-theme', theme);
+            localStorage.setItem('portfolio_theme', theme);
+            
+            const iconDesktop = document.getElementById('theme-icon-desktop');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            
+            if (theme === 'dark') {
+                if (iconDesktop) { iconDesktop.className = "bi bi-sun-fill fs-6"; }
+                if (iconMobile) { iconMobile.className = "bi bi-sun-fill"; }
+            } else {
+                if (iconDesktop) { iconDesktop.className = "bi bi-moon-fill fs-6"; }
+                if (iconMobile) { iconMobile.className = "bi bi-moon-fill"; }
+            }
+        }
+
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-bs-theme');
+            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
+            setTheme(savedTheme);
+        });
+
+        // Logika Interaktif Galeri Foto "Tentang Saya"
+        let currentPhotoIndex = 0;
+        function nextPhoto() {
+            const cards = document.querySelectorAll('.about-photo-card');
+            if (cards.length === 0) return;
+
+            cards[currentPhotoIndex].classList.remove('active');
+            cards[currentPhotoIndex].classList.add('prev');
+
+            currentPhotoIndex = (currentPhotoIndex + 1) % cards.length;
+
+            // Reset classes
+            cards.forEach((card, idx) => {
+                card.classList.remove('active', 'prev', 'next');
+                if (idx === currentPhotoIndex) {
+                    card.classList.add('active');
+                } else if (idx === (currentPhotoIndex + 1) % cards.length) {
+                    card.classList.add('next');
+                } else {
+                    card.classList.add('prev');
+                }
+            });
+        }
+
+        // Logika Pengiriman Form Kontak
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const submitBtn = document.getElementById("submitBtn");
+        const btnText = document.getElementById("btnText");
+
+        // Ubah tombol menjadi status "Mengirim..."
+        submitBtn.disabled = true;
+        btnText.innerText = "Mengirim Pesan...";
+
+        // Parameter yang dikirim ke EmailJS
+        const templateParams = {
+            from_name: document.getElementById("from_name").value,
+            reply_to: document.getElementById("reply_to").value,
+            message: document.getElementById("message").value,
+            to_email: "asran0193@gmail.com"
+        };
+
+        // Ganti "service_ma9t6h9" dengan Service ID Anda yang sebenarnya dari EmailJS
+        emailjs.send("service_ma9t6h9", "template_f2xd2rw", templateParams)
+            .then(function(response) {
+                alert("Pesan berhasil terkirim secara langsung ke email Asran!");
+                document.getElementById("contactForm").reset();
+                submitBtn.disabled = false;
+                btnText.innerText = "Kirim Pesan";
+            }, function(error) {
+                alert("Gagal mengirim pesan. Periksa kembali Service ID Anda di EmailJS.");
+                console.error("FAILED...", error);
+                submitBtn.disabled = false;
+                btnText.innerText = "Kirim Pesan";
+            });
+    });
+
+
+
+
+
+    const githubUsername = "Rans1273";
+
+    async function fetchGitHubData() {
+        try {
+            // 1. Ambil Statistik Profil (Repositori, Followers, Following)
+            const userResponse = await fetch(`https://api.github.com/users/${githubUsername}`);
+            if (userResponse.ok) {
+                const userData = await userResponse.json();
+                document.getElementById("gh-repos").innerText = userData.public_repos || 0;
+                document.getElementById("gh-followers").innerText = userData.followers || 0;
+                document.getElementById("gh-following").innerText = userData.following || 0;
+            }
+
+            // 2. Ambil Daftar Repositori Publik Terbaru
+            const reposResponse = await fetch(`https://api.github.com/users/${githubUsername}/repos?sort=updated&per_page=4`);
+            if (reposResponse.ok) {
+                const repos = await reposResponse.json();
+                const container = document.getElementById("github-repos-list");
+                container.innerHTML = "";
+
+                if (repos.length === 0) {
+                    container.innerHTML = `<div class="col-12 text-center text-muted"><p>Tidak ada repositori ditemukan.</p></div>`;
+                    return;
+                }
+
+                repos.forEach(repo => {
+                    const desc = repo.description ? repo.description : "Tidak ada deskripsi.";
+                    const lang = repo.language ? repo.language : "Lainnya";
+                    
+                    const card = `
+                        <div class="col-md-6">
+                            <div class="p-4 glass-card h-100 d-flex flex-column justify-content-between border border-secondary border-opacity-25">
+                                <div>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <!-- Judul Repositori dengan warna teks utama yang tebal dan jelas -->
+                                        <h5 class="fw-bold mb-0 text-truncate" style="max-width: 65%;">
+                                            <a href="${repo.html_url}" target="_blank" class="text-decoration-none text-body fw-bold">${repo.name}</a>
+                                        </h5>
+                                        <!-- Badge bahasa pemrograman dengan warna kontras (Kuning) -->
+                                        <span class="badge bg-warning text-dark px-3 py-1 rounded-pill fw-semibold small">${lang}</span>
+                                    </div>
+                                    <p class="text-muted small mb-3" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                                        ${desc}
+                                    </p>
+                                </div>
+                                <div class="d-flex gap-3 text-muted small border-top pt-3 border-secondary border-opacity-25">
+                                    <span><i class="bi bi-star me-1 text-warning"></i>${repo.stargazers_count}</span>
+                                    <span><i class="bi bi-diagram-3 me-1 text-info"></i>${repo.forks_count}</span>
+                                    <span class="ms-auto"><i class="bi bi-calendar3 me-1"></i>${new Date(repo.updated_at).toLocaleDateString('id-ID', {month: 'short', year: 'numeric'})}</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += card;
+                });
+            }
+        } catch (error) {
+            console.error("Gagal mengambil data GitHub:", error);
+            document.getElementById("github-repos-list").innerHTML = `<div class="col-12 text-center text-danger"><p>Gagal memuat data dari GitHub.</p></div>`;
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchGitHubData();
+    });
+
+</script>
+</body>
+</html>
